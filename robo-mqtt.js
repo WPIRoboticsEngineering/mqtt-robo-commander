@@ -1,6 +1,6 @@
 function startConnect() {
     // Generate a random client ID
-    clientID = "clientID_" + parseInt(Math.random() * 100);
+    clientID = "Commander_" + parseInt(Math.random() * 100);
 
     // Fetch the hostname/IP address and port number from the form
     host = document.getElementById("host").value;
@@ -38,6 +38,9 @@ function onConnect() {
 
     // Subscribe to the requested topic
     client.subscribe(topic);
+	uiConnected();
+	$('[href="#controll"]').tab('show');
+	
 }
 
 // Called when the client loses its connection
@@ -46,6 +49,7 @@ function onConnectionLost(responseObject) {
     if (responseObject.errorCode !== 0) {
         	document.getElementById("messages").innerHTML += '<span>ERROR: ' + + responseObject.errorMessage + '</span><br/>';
     }
+	uiError();
 }
 
 // Called when a message arrives
@@ -58,8 +62,37 @@ function onMessageArrived(message) {
 function startDisconnect() {
     client.disconnect();
     document.getElementById("messages").innerHTML += '<span>Disconnected</span><br/>';
+	uiInactive();
+
 }
 
 function mqttFailure(){
 	document.getElementById("messages").innerHTML += '<span>ERROR: Connection  failed.</span><br/>';
+	uiError();
+}
+
+function uiConnected(){
+	$( "#btn-connect" ).addClass("hidden");
+	$( "#btn-connected" ).removeClass("hidden");
+	$( "#btn-reconnect" ).addClass("hidden");
+	$( "#btn-disconnect" ).removeClass("hidden");
+	$( "#connfailed" ).addClass("hidden");
+
+}
+
+function uiError(){
+	$( "#btn-connect" ).addClass("hidden");
+	$( "#btn-connected" ).addClass("hidden");
+	$( "#btn-reconnect" ).removeClass("hidden");
+	$( "#btn-disconnect" ).addClass("hidden");
+	$( "#connfailed" ).removeClass("hidden");	
+}
+
+
+function uiInactive(){
+	$( "#btn-connect" ).removeClass("hidden");
+	$( "#btn-connected" ).addClass("hidden");
+	$( "#btn-reconnect" ).addClass("hidden");
+	$( "#btn-disconnect" ).addClass("hidden");
+	$( "#connfailed" ).addClass("hidden");		
 }
