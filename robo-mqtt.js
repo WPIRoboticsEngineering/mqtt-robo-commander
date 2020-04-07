@@ -9,9 +9,11 @@ function startConnect() {
 	mqttPass = document.getElementById("pass").value;
 
     // Print output for the user in the messages div
-    document.getElementById("messages").innerHTML += '<span>Connecting to: ' + host + ' on port: ' + port + '</span><br/>';
-    document.getElementById("messages").innerHTML += '<span>Using the following client value: ' + clientID + '</span><br/>';
+    //document.getElementById("messages").innerHTML += '<span>Connecting to: ' + host + ' on port: ' + port + '</span><br/>';
+    //document.getElementById("messages").innerHTML += '<span>Using the following client value: ' + clientID + '</span><br/>';
 
+
+	printMessage('Connecting to: ' + host + ' on port: ' + port + '<br/>'+'Using the following client value: ' + clientID);
     // Initialize new Paho client connection
     client = new Paho.MQTT.Client(host, Number(port), clientID);
 
@@ -34,7 +36,8 @@ function onConnect() {
     topic = "#";
 
     // Print output for the user in the messages div
-    document.getElementById("messages").innerHTML += '<span>Subscribing to: ' + topic + '</span><br/>';
+    //document.getElementById("messages").innerHTML += '<span>Subscribing to: ' + topic + '</span><br/>';
+	printMessage('Subscribing to: ' + topic + '');
 
     // Subscribe to the requested topic
     client.subscribe(topic);
@@ -45,7 +48,8 @@ function onConnect() {
 
 // Called when the client loses its connection
 function onConnectionLost(responseObject) {
-    document.getElementById("messages").innerHTML += '<span>ERROR: Connection lost</span><br/>';
+    //document.getElementById("messages").innerHTML += '<span>ERROR: Connection lost</span><br/>';
+	printMessage('ERROR: Connection lost','danger');
     if (responseObject.errorCode !== 0) {
         	document.getElementById("messages").innerHTML += '<span>ERROR: ' + + responseObject.errorMessage + '</span><br/>';
     }
@@ -55,20 +59,28 @@ function onConnectionLost(responseObject) {
 // Called when a message arrives
 function onMessageArrived(message) {
     console.log("onMessageArrived: " + message.payloadString);
-    document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>';
+    //document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>';
+	printMessage('<b>Topic:</b> ' + message.destinationName + '  | ' + message.payloadString + '','success');
 }
 
 // Called when the disconnection button is pressed
 function startDisconnect() {
     client.disconnect();
     document.getElementById("messages").innerHTML += '<span>Disconnected</span><br/>';
+	printMessage('Disconnected','info');
 	uiInactive();
 
 }
 
 function mqttFailure(){
-	document.getElementById("messages").innerHTML += '<span>ERROR: Connection  failed.</span><br/>';
+	printMessage('<b>ERROR:</b> Connection  failed.','danger');
+	//document.getElementById("messages").innerHTML += '<span>ERROR: Connection  failed.</span><br/>';
 	uiError();
+}
+
+function printMessage(message,level="info"){
+	message = "<div class=\"alert px-2 py-1 alert-"+level+"\" role=\"alert\">"+message+"</div>"
+	document.getElementById("messages").innerHTML = message + document.getElementById("messages").innerHTML ;
 }
 
 function uiConnected(){
