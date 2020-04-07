@@ -83,6 +83,35 @@ function printMessage(message,level="info"){
 	document.getElementById("messages").innerHTML = message + document.getElementById("messages").innerHTML ;
 }
 
+function updateHud(sensor,value){
+	robosvg = document.getElementById('svg-robot').contentDocument;
+	ui_elem = robosvg.getElementById(sensor)
+	switch (sensor){
+		// Line Sensor Circles
+
+		case "lineLeftSensor":
+		case "lineMiddleSensor":
+		case "lineRightSensor":
+			val = map(Number(value),0,255,1,10);
+			ui_elem.setAttribute('r',val);
+			break;
+		case "proxFrontLeftSensor":
+		case "proxFrontRightSensor":
+		case "proxLeftSensor":
+		case "proxRightSensor":
+			console.info(sensor+'Gradient');
+			ui_elem = robosvg.getElementById(sensor+'Gradient');
+			val = map(Number(value),0,255,10,60);
+			ui_elem.setAttribute('r',val);
+			break;
+		case "encoderRightCount":
+		case "encoderLeftCount":
+			r = ui_elem.getElementsByTagName("tspan")[0];
+			r.innerHTML=value;
+		break;
+	}
+}
+
 function uiConnected(){
 	$( "#btn-connect" ).addClass("hidden");
 	$( "#btn-connected" ).removeClass("hidden");
@@ -107,4 +136,8 @@ function uiInactive(){
 	$( "#btn-reconnect" ).addClass("hidden");
 	$( "#btn-disconnect" ).addClass("hidden");
 	$( "#connfailed" ).addClass("hidden");		
+}
+
+function map( x,  in_min,  in_max,  out_min,  out_max) {
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }

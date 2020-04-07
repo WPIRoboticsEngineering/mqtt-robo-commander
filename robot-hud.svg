@@ -16,7 +16,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="robot-soruce.svg">
+   sodipodi:docname="robot-hud.svg">
   <defs
      id="defs2">
     <linearGradient
@@ -41,46 +41,50 @@
        y2="45.485115"
        gradientUnits="userSpaceOnUse"
        gradientTransform="rotate(-90,16.933237,4.758179)" />
-    <linearGradient
+    <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient858"
-       id="linearGradient860-4"
-       x1="80.001839"
-       y1="45.485115"
-       x2="130.00154"
-       y2="45.485115"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="rotate(-90,65.517913,-43.826138)" />
-    <linearGradient
+       id="proxFrontRightSensorGradient"
+       cx="154.82921"
+       cy="-48.431187"
+       fx="154.82921"
+       fy="-48.431187"
+       r="35.35521"
+       gradientTransform="matrix(1,0,0,0.70710551,0,-24.401017)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient858"
-       id="linearGradient860-4-2"
-       x1="80.001839"
-       y1="45.485115"
-       x2="130.00154"
-       y2="45.485115"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(92.28976,-81.570311)" />
-    <linearGradient
+       id="proxFrontLeftSensorGradient"
+       cx="75.122963"
+       cy="-47.763367"
+       fx="75.122963"
+       fy="-47.763367"
+       r="35.35519"
+       gradientTransform="matrix(1,0,0,0.70710562,0,-24.40111)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient858"
-       id="linearGradient860-4-2-4"
-       x1="80.001839"
-       y1="45.485115"
-       x2="130.00154"
-       y2="45.485115"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(-1,0,0,1,137.66218,-81.570671)" />
-    <linearGradient
+       id="proxRightSensorGradient"
+       cx="172.62874"
+       cy="-36.085228"
+       fx="172.62874"
+       fy="-36.085228"
+       r="24.999855"
+       gradientTransform="matrix(1,0,0,1.4142157,0,14.947069)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient858"
-       id="linearGradient942"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="rotate(-90,25.664632,-3.9732165)"
-       x1="80.001839"
-       y1="45.485115"
-       x2="130.00154"
-       y2="45.485115" />
+       id="proxLeftSensorGradient"
+       cx="57.417934"
+       cy="-36.085587"
+       fx="57.417934"
+       fy="-36.085587"
+       r="24.999855"
+       gradientTransform="matrix(1,0,0,1.4142157,0,14.947218)"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -90,8 +94,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="391.45308"
-     inkscape:cy="691.53931"
+     inkscape:cx="415.73879"
+     inkscape:cy="521.89645"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -130,22 +134,22 @@
      id="layer1"
      transform="translate(-5.660642,110.31012)">
     <path
-       style="opacity:1;fill:url(#linearGradient942);fill-opacity:1;stroke:none;stroke-width:0.19965112;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:url(#proxFrontLeftSensorGradient);fill-opacity:1;stroke:none;stroke-width:0.19965112;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 110.47815,-93.665433 a 50,50 0 0 0 -70.710379,-3.6e-4 l 35.355372,35.355375 z"
        id="proxFrontLeftSensor"
        inkscape:connector-curvature="0" />
     <path
-       style="opacity:1;fill:url(#linearGradient860-4);fill-opacity:1;stroke:none;stroke-width:0.19965112;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:url(#proxFrontRightSensorGradient);fill-opacity:1;stroke:none;stroke-width:0.19965112;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 190.18442,-93.665073 a 50.000001,50.000001 0 0 0 -70.71042,-3.6e-4 l 35.35541,35.355376 z"
        id="proxFrontRightSensor"
        inkscape:connector-curvature="0" />
     <path
-       style="opacity:1;fill:url(#linearGradient860-4-2);fill-opacity:1;stroke:none;stroke-width:0.19965112;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:url(#proxRightSensorGradient);fill-opacity:1;stroke:none;stroke-width:0.19965112;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 207.64686,-0.730039 a 50.000001,50.000001 0 0 0 3.6e-4,-70.710376 l -35.35538,35.355366 z"
        id="proxRightSensor"
        inkscape:connector-curvature="0" />
     <path
-       style="opacity:1;fill:url(#linearGradient860-4-2-4);fill-opacity:1;stroke:none;stroke-width:0.19965112;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:url(#proxLeftSensorGradient);fill-opacity:1;stroke:none;stroke-width:0.19965112;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 22.305332,-0.730399 a 50.000001,50.000001 0 0 1 -3.6e-4,-70.710377 l 35.35538,35.355366 z"
        id="proxLeftSensor"
        inkscape:connector-curvature="0" />
@@ -184,26 +188,26 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Impact;-inkscape-font-specification:Impact;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="57.705868"
+       x="66.023079"
        y="21.309032"
        id="encoderLeftCount"
        inkscape:label="#encoderLeftCount"><tspan
          sodipodi:role="line"
          id="tspan1001"
-         x="57.705868"
+         x="66.023079"
          y="21.309032"
-         style="stroke-width:0.26458332">000</tspan></text>
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">000</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:Impact;-inkscape-font-specification:Impact;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="155.2086"
+       x="163.94461"
        y="21.309032"
        id="encoderRightCount"><tspan
          sodipodi:role="line"
          id="tspan1001-8"
-         x="155.2086"
+         x="163.94461"
          y="21.309032"
-         style="stroke-width:0.26458332">000</tspan></text>
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">000</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot1104"
@@ -215,5 +219,5 @@
            height="1305.1171"
            x="-1751.6045"
            y="-742.22192" /></flowRegion><flowPara
-         id="flowPara1110"></flowPara></flowRoot>  </g>
+         id="flowPara1110" /></flowRoot>  </g>
 </svg>
