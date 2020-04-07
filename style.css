@@ -1,0 +1,16 @@
+
+		body {
+  padding : 10px ;
+
+}
+
+#exTab1 .tab-content {
+  color : white;
+  padding : 5px 15px;
+}
+
+#exTab2 h3 {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}

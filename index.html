@@ -1,28 +1,79 @@
-<!doctype html>
-<html lang="en">
+
+
+<!DOCTYPE html>
+<html>
 	<head>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
-		<script src="robo-mqtt.js" type="text/javascript"></script>
-	</head>
-	<body>
-		<form id="connection-info-form">
-			<b>Hostname or IP Address:</b> 
-			<input id="host" type="text" name="host" value="robomqtt.cs.wpi.edu" />
-			<br />
-			<b>Port:</b>
-			<input id="port" type="text" name="port" value="9001" />
-			<b>Username:</b>
-			<input id="user" type="text" name="user" value="test" />
-			<b>Password:</b>
-			<input id="pass" type="text" name="pass" value="" />
-			<br />
-			<b>Topic:</b>
-			<input id="topic" type="text" name="topic" value="#" />
-			<br />
-			<br />
-			<input type="button" onclick="startConnect()" value="Connect" />
-			<input type="button" onclick="startDisconnect()" value="Disconnect" />
-		</form>
-		<div id="messages"/>
-	</body>
+		<meta charset="utf-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">;</script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">;</script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+		<script src="robo-mqtt.js" type="text/javascript"> ;</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript">;</script>
+		<link rel="stylesheet" href="style.css" />
+	</script>
+</head>
+<body>
+
+
+
+	<!-- TODO: Here goes your content! -->
+	<div class="container">
+		<h2>Example 3 </h2>
+
+		<ul class="nav nav-tabs">
+			<li class="active">
+				<a data-toggle="tab" href="#home">Home</a>
+			</li>
+			<li>
+				<a data-toggle="tab" href="#menu1">Menu 1</a>
+			</li>
+			<li>
+				<a data-toggle="tab" href="#menu2">Menu 2</a>
+			</li>
+		</ul>
+
+		<div class="tab-content">
+			<div id="home" class="tab-pane fade in active">
+				<form>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputEmail4">Hostname</label>
+							<input type="text" id="host" name="host" class="form-control"  value="robomqtt.cs.wpi.edu" />
+
+						</div>
+						<div class="form-group col-md-6">
+							<label for="inputPassword4">Port</label>
+							<input type="text"  id="port" name="port" class="form-control" value="9001"/>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputEmail4">Username</label>
+							<input type="text" id="user" name="user" class="form-control"  value="test" />
+						</div>
+						<div class="form-group col-md-6">
+							<label for="inputPassword4">Password</label>
+							<input type="text"  id="pass" name="pass" class="form-control"  value=""/>
+						</div>
+						<button type="button" onclick="startConnect()" class="btn btn-primary">Connect</button>
+					</div>
+
+				</form>
+			</div>
+			<div id="menu1" class="tab-pane fade">
+				<h3>Messages</h3>
+				<div id="messages"></div>
+			</div>
+			<div id="menu2" class="tab-pane fade">
+				<h3>Menu 2</h3>
+				<p>Some content in menu 2.</p>
+			</div>
+		</div>
+
+
+	</div>
+
+	<!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
+
+</body>
 </html>
