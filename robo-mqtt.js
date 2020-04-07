@@ -31,7 +31,7 @@ function startConnect() {
 // Called when the client connects
 function onConnect() {
     // Fetch the MQTT topic from the form
-    topic = document.getElementById("topic").value;
+    topic = "#";
 
     // Print output for the user in the messages div
     document.getElementById("messages").innerHTML += '<span>Subscribing to: ' + topic + '</span><br/>';
@@ -43,9 +43,8 @@ function onConnect() {
 // Called when the client loses its connection
 function onConnectionLost(responseObject) {
     document.getElementById("messages").innerHTML += '<span>ERROR: Connection lost</span><br/>';
-	document.getElementById("messages").innerHTML += '<span>ERROR: ' + + responseObject.errorMessage + '</span><br/>';
     if (responseObject.errorCode !== 0) {
-        
+        	document.getElementById("messages").innerHTML += '<span>ERROR: ' + + responseObject.errorMessage + '</span><br/>';
     }
 }
 
