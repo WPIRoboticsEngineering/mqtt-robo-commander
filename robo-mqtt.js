@@ -1,3 +1,5 @@
+
+
 function startConnect() {
     // Generate a random client ID
     clientID = "Commander_" + parseInt(Math.random() * 100);
@@ -42,7 +44,7 @@ function onConnect() {
     // Subscribe to the requested topic
     client.subscribe(topic);
 	uiConnected();
-	$('[href="#controll"]').tab('show');
+	$('[href="#control"]').tab('show');
 	
 }
 
@@ -83,6 +85,7 @@ function printMessage(message,level="info"){
 	document.getElementById("messages").innerHTML = message + document.getElementById("messages").innerHTML ;
 }
 
+
 function updateHud(sensor,value){
 	robosvg = document.getElementById('svg-robot').contentDocument;
 	ui_elem = robosvg.getElementById(sensor)
@@ -113,29 +116,29 @@ function updateHud(sensor,value){
 }
 
 function uiConnected(){
-	$( "#btn-connect" ).addClass("hidden");
-	$( "#btn-connected" ).removeClass("hidden");
-	$( "#btn-reconnect" ).addClass("hidden");
-	$( "#btn-disconnect" ).removeClass("hidden");
-	$( "#connfailed" ).addClass("hidden");
+	$( "#btn-connect" ).addClass("d-none");
+	$( "#btn-connected" ).removeClass("d-none");
+	$( "#btn-reconnect" ).addClass("d-none");
+	$( "#btn-disconnect" ).removeClass("d-none");
+	$( "#connfailed" ).addClass("d-none");
 
 }
 
 function uiError(){
-	$( "#btn-connect" ).addClass("hidden");
-	$( "#btn-connected" ).addClass("hidden");
-	$( "#btn-reconnect" ).removeClass("hidden");
-	$( "#btn-disconnect" ).addClass("hidden");
-	$( "#connfailed" ).removeClass("hidden");	
+	$( "#btn-connect" ).addClass("d-none");
+	$( "#btn-connected" ).addClass("d-none");
+	$( "#btn-reconnect" ).removeClass("d-none");
+	$( "#btn-disconnect" ).addClass("d-none");
+	$( "#connfailed" ).removeClass("d-none");	
 }
 
 
 function uiInactive(){
-	$( "#btn-connect" ).removeClass("hidden");
-	$( "#btn-connected" ).addClass("hidden");
-	$( "#btn-reconnect" ).addClass("hidden");
-	$( "#btn-disconnect" ).addClass("hidden");
-	$( "#connfailed" ).addClass("hidden");		
+	$( "#btn-connect" ).removeClass("d-none");
+	$( "#btn-connected" ).addClass("d-none");
+	$( "#btn-reconnect" ).addClass("d-none");
+	$( "#btn-disconnect" ).addClass("d-none");
+	$( "#connfailed" ).addClass("d-none");		
 }
 
 function map( x,  in_min,  in_max,  out_min,  out_max) {
