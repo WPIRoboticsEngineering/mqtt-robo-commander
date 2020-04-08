@@ -41,7 +41,7 @@
 
   <!-- Page Content -->
   <div class="container">
-    <div class="row">
+    <div class="row ">
         <div class="tab-content w-100">
 	      <div class="tab-pane container active" id="connection">
 		  <br />
@@ -82,8 +82,12 @@
 			<br /><h3>Log</h3>
 			<div id="messages" ></div>
 		  </div>
-          <div class="tab-pane container fade" id="control" style="background-color: #aaaaaa">
-			<object id="svg-robot" data="robot-hud.svg" width="100%" type="image/svg+xml"></object>
+          <div class="tab-pane container fade " id="control">
+		      <div class="row bg-faded">
+        <div class="col-10 mx-auto text-center">
+			<object id="svg-robot" data="robot-hud.svg"  type="image/svg+xml" width="100%" class="display: inline;"></object>
+		  </div>
+		  </div>
 		  </div>
         </div>
     </div>
