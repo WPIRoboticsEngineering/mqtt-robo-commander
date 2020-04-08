@@ -209,8 +209,8 @@ function updateHud(sensor, value) {
 function uiConnected() {
   $("#connection-error").hide();
   $("#connection-success").show();
-  $("#button-connect").show();
-  $("#button-disconnect").hide();
+  $("#button-connect").hide();
+  $("#button-disconnect").show();
 }
 
 function uiError() {
