@@ -1,9 +1,3 @@
-
-
-
-
-
-
 function startConnect() {
   // Generate a random client ID
   clientID = "Commander_" + parseInt(Math.random() * 100);
@@ -91,20 +85,6 @@ buttonA,buttonB,buttonC]
 
 [10,10,10,5,5,5,5,432,545,1,1,0]
 
-object style
-
-lls,lms,lrs,
-pfls,pfrs,pls,prs
-erc,elc
-ba,bb,bc
-
-{'lls':10,'lms':10,'lrs':10,
- 'pfls':5,'pfrs':5,'pls':5,'prs':5,
- 'erc':432,'erc':545,
- 'ba':1,'bb':1,'bc':0
-}
-
-
 
 
 */
@@ -113,7 +93,7 @@ ba,bb,bc
 
 // Called when a message arrives
 function onMessageArrived(message) {
-  console.log("onMessageArrived: " + message.payloadString);
+  //console.log("onMessageArrived: " + message.payloadString);
   //document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>';
   printMessage(message.destinationName, message.payloadString, 'mqtt');
   robotNumber = 1;
@@ -154,6 +134,37 @@ function mqttFailure() {
   printMessage('Connection Error', 'Connection  failed', 'connection');
   //document.getElementById("messages").innerHTML += '<span>ERROR: Connection  failed.</span><br/>';
   uiError();
+}
+
+function joyMove(evt, data) {
+  //console.info(data);
+  angleToVelocity(data.angle.radian,data.distance);
+  joyActive = true;
+}
+
+velx = 0
+vely = 0;
+joyActive = false;
+
+function angleToVelocity(angle,mag) {
+  var velx_n = (Math.sin(angle)+Math.cos(angle))*(mag/60);
+  var vely_n = (Math.sin(angle)-Math.cos(angle))*(mag/60);
+  //console.info(velx_n + " " + vely_n );
+  velx=Math.trunc(velx_n*128);
+  vely=Math.trunc(vely_n*128);
+}
+
+setInterval(publishVelocity, 500);
+
+function publishVelocity() {
+  if (joyActive) {
+    joyActive = false;
+    // publish
+    message = new Paho.MQTT.Message("[" + velx + "," + vely + ",200]");
+    message.destinationName = "/zumobot/" + String(robotNumber) + "/drive/velocity";
+    client.send(message);
+
+  }
 }
 
 function printMessage(title, message, type = "") {
@@ -202,7 +213,7 @@ function updateHud(sensor, value) {
     case "proxFrontRightSensor":
     case "proxLeftSensor":
     case "proxRightSensor":
-      console.info(sensor + 'Gradient');
+      //console.info(sensor + 'Gradient');
       ui_elem = robosvg.getElementById(sensor + 'Gradient');
       val = map(Number(value), 0, 255, 10, 60);
       ui_elem.setAttribute('r', val);
