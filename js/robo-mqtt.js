@@ -1,3 +1,9 @@
+
+
+
+
+
+
 function startConnect() {
   // Generate a random client ID
   clientID = "Commander_" + parseInt(Math.random() * 100);
@@ -14,7 +20,7 @@ function startConnect() {
   //document.getElementById("messages").innerHTML += '<span>Using the following client value: ' + clientID + '</span><br/>';
 
 
-  printMessage('New Connection', host + '<br /> on port: ' + port + ' Using the following client value: ' + clientID,'connection');
+  printMessage('New Connection', host + '<br /> on port: ' + port + ' Using the following client value: ' + clientID, 'connection');
   // Initialize new Paho client connection
   client = new Paho.MQTT.Client(host, Number(port), clientID);
 
@@ -33,12 +39,15 @@ function startConnect() {
 
 // Called when the client connects
 function onConnect() {
+
+
+
   // Fetch the MQTT topic from the form
   topic = "/zumobot/" + String(robotNumber) + "/telemetry";
 
   // Print output for the user in the messages div
   //document.getElementById("messages").innerHTML += '<span>Subscribing to: ' + topic + '</span><br/>';
-  printMessage('Subscribing to Topic', topic ,'mqtt');
+  printMessage('Subscribing to Topic', topic, 'mqtt');
 
   // Subscribe to the requested topic
   client.subscribe(topic);
@@ -106,7 +115,7 @@ ba,bb,bc
 function onMessageArrived(message) {
   console.log("onMessageArrived: " + message.payloadString);
   //document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>';
-  printMessage( message.destinationName,  message.payloadString , 'mqtt');
+  printMessage(message.destinationName, message.payloadString, 'mqtt');
   robotNumber = 1;
   if (message.destinationName == "/zumobot/" + String(robotNumber) + "/telemetry") {
     var sensorData = JSON.parse(message.payloadString);
